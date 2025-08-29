@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MaxStore</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <i class="fa-solid fa-bolt"></i>
+      <h1>MaxStore</h1>
+    </div>
+    <div class="container-busca">
+      <input class="input-pesquisa" type="text" placeholder="Pesquisar produtos"/>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+  </header>
+
+  <div class="container-categorias">
+    <nav>
+      <button class="botao-categorias ativo" data-categoria="todos">
+        <i class="fa-solid fa-border-all"></i> Todos
+      </button>
+      <button class="botao-categorias" data-categoria="smartphones">
+        <i class="fa-solid fa-mobile-retro"></i> SmartPhones
+      </button>
+      <button class="botao-categorias" data-categoria="laptops">
+        <i class="fa-solid fa-laptop"></i> Notebooks
+      </button>
+      <button class="botao-categorias" data-categoria="headphones">
+        <i class="fa-solid fa-headphones"></i> Fones
+      </button>
+      <button class="botao-categorias" data-categoria="accessories">
+        <i class="fa-solid fa-keyboard"></i> Acessórios
+      </button>
+      <button class="botao-categorias" data-categoria="smartwatch">
+        <i class="fa-solid fa-clock"></i> SmartWatch
+      </button>
+    </nav>
+  </div>
+
+  <section class="sesao-hero">
+    <h2>Black Friday Antecipada!</h2>
+    <p>Até 50% em Produtos Selecionados</p>
+  </section>
+
+  <main class="produtos">
+    <div class="produtos-container"></div>
+  </main>
+
+  <footer>
+    <p>2025 - Flayks Oliveira - Todos os direitos reservados &reg;</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
