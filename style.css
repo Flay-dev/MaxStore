@@ -1,7 +1,13 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Evita scroll horizontal indevido */
+html, body {
+  overflow-x: hidden;
 }
 
 :root {
@@ -22,39 +28,44 @@ body {
   line-height: 1.6;
 }
 
+/* Header */
 header {
   background-color: var(--white-color);
-  padding: 16px 32px;
+  padding: 16px clamp(16px, 3vw, 32px);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;  /* evita sobras nas laterais */
+  flex-wrap: wrap;                  /* quebra em 2 linhas se precisar */
+  gap: 12px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: clamp(22px, 4vw, 32px);
   color: var(--primary-color);
   font-weight: bold;
 }
 
 .fa-bolt {
   color: var(--primary-color);
-  font-size: 32px;
+  font-size: clamp(22px, 4vw, 32px);
 }
 
+/* Busca */
 .container-busca {
   width: 100%;
-  max-width: 500px;
-  margin: 0 32px;
+  max-width: 520px;
+  margin-left: auto;
   display: flex;
   align-items: center;
-  padding: 8px 16px;
-  color: var(--light-gray);
+  padding: 8px 14px;
+  gap: 10px;
+  background-color: var(--light-gray);
   border-radius: 24px;
 }
 
@@ -62,10 +73,10 @@ h1 {
   width: 100%;
   border: none;
   outline: none;
-  background-color: var(--light-gray);
-  padding: 8px;
+  background: transparent;
+  padding: 8px 4px;
   font-size: 16px;
-  cursor: pointer;
+  min-width: 0; /* evita estourar o flex */
 }
 
 .fa-magnifying-glass {
@@ -73,6 +84,7 @@ h1 {
   cursor: pointer;
 }
 
+/* Categorias */
 .container-categorias {
   display: flex;
   justify-content: center;
@@ -82,23 +94,26 @@ h1 {
 .container-categorias nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  gap: 10px;
   width: 100%;
   max-width: 1200px;
-  padding: 8px 32px;
+  padding: 8px clamp(12px, 3vw, 32px);
+  overflow-x: auto;                 /* permite rolar horizontal no mobile */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .botao-categorias {
-  display: flex;
+  display: inline-flex;
   gap: 8px;
   align-items: center;
   border: none;
   border-radius: 24px;
   color: var(--white-color);
   background: none;
-  padding: 24px 12px;
+  padding: 12px 16px;               /* reduz o padding pra caber melhor */
   cursor: pointer;
+  white-space: nowrap;              /* não deixa quebrar o texto do botão */
 }
 
 .botao-categorias:hover {
@@ -109,13 +124,15 @@ h1 {
   background-color: var(--primary-color);
 }
 
+/* Hero */
 .sesao-hero {
   color: var(--white-color);
   text-align: center;
-  padding: 48px 32px;
+  padding: 48px clamp(16px, 4vw, 32px);
   background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(255, 65, 17, 1) 50%, rgb(233, 147, 27) 100%);
 }
 
+/* Footer */
 footer {
   background-color: var(--secondary-color);
   color: var(--white-color);
@@ -123,27 +140,31 @@ footer {
   padding: 32px;
 }
 
+/* Produtos (container da grade) */
 .produtos {
   width: 100%;
   max-width: 1200px;
-  padding: 32px;
+  padding: 24px clamp(12px, 4vw, 32px);
   margin: 0 auto;
 }
 
 .produtos-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* usa colunas mais flexíveis no mobile */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
+/* Card */
 .card-produto {
   background-color: var(--white-color);
   border-radius: 16px;
-  box-shadow: rgba(82, 76, 76, 0.25) 0px 54px 55px,
-              rgba(0, 0, 0, 0.12) 0px -12px 30px,
-              rgba(0, 0, 0, 0.12) 0px 4px 6px,
-              rgba(0, 0, 0, 0.17) 0px 12px 13px,
-              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow:
+    rgba(82, 76, 76, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
   cursor: pointer;
   transition: 0.5s;
   overflow: hidden;
@@ -153,6 +174,7 @@ footer {
   width: 100%;
   height: 180px;
   object-fit: cover;
+  display: block;
 }
 
 .info-produtos {
@@ -194,8 +216,18 @@ footer {
 }
 
 .card-produto:hover {
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, 
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
               rgba(0, 0, 0, 0.22) 0px 15px 12px;
   transform: translateY(-16px);
   transition: 0.5s;
+}
+
+/* Ajustes extras para telas bem pequenas */
+@media (max-width: 480px) {
+  .imagen-produto {
+    height: 150px;
+  }
+  .preco-produto {
+    font-size: 18px;
+  }
 }
